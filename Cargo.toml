@@ -4,6 +4,15 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+actix = "0.13.5"
 actix-web = { version = "4", features = ["openssl"] }
-openssl = { version = "0.10" }
-tokio = { version = "1.37.0", features = ["macros", "rt-multi-thread"] }
+actix-web-actors = "4.3.1"
+actix-ws = "0.3.0"
+env_logger = "0.11.5"
+futures = "0.3.31"
+log = "0.4.22"
+openssl = { version = "0.10.68" }
+serde = "1.0.214"
+serde_json = "1.0.132"
+tokio = { version = "1.41.0", features = ["macros", "rt-multi-thread"] }
+uuid = { version = "1.11.0", features = ["v4"] }
