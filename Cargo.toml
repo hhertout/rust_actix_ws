@@ -1,0 +1,9 @@
+[package]
+name = "actix_ws"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+actix-web = { version = "4", features = ["openssl"] }
+openssl = { version = "0.10" }
+tokio = { version = "1.37.0", features = ["macros", "rt-multi-thread"] }
