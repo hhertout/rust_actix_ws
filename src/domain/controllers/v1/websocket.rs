@@ -1,11 +1,10 @@
 use actix_web::{
-    error::{ErrorBadRequest, ErrorInternalServerError}, get, http::StatusCode, web::{self, Data}, Error, HttpRequest, HttpResponse,
+    error::{ErrorInternalServerError}, get, http::StatusCode, web::{self, Data}, Error, HttpRequest, HttpResponse,
 };
 use actix_web_actors::ws;
-use serde_json::json;
 
 use crate::{
-    app::ws::{socket_worker::SocketWorker, socket_server::ChatServer},
+    app::ws::{socket_worker::SocketWorker},
     AppState,
 };
 

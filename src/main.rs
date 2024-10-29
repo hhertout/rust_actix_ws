@@ -7,6 +7,7 @@ use app::ws::socket_server::ChatServer;
 use domain::controllers::gen_v1;
 
 pub(crate) mod domain;
+mod infra;
 
 #[derive(Clone)]
 pub struct AppState {
