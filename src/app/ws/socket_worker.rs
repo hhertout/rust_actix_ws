@@ -75,7 +75,7 @@ impl StreamHandler<Result<ws::Message, ws::ProtocolError>> for SocketWorker {
                 self.hb = Instant::now();
             }
             Ok(ws::Message::Text(text)) => {
-                let mut server = self.server.lock().expect("Failed to lock the server mutex");
+                let server = self.server.lock().expect("Failed to lock the server mutex");
                 log::debug!("Received message :  {}", text);
                 server.send_message(&text, self.instance_id);
             }

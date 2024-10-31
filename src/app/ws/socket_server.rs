@@ -46,7 +46,7 @@ impl ChatServer {
         for (id, recipient) in &self.sessions {
             if *id != skip_id {
                 log::debug!("Message sent to id={}", id);
-                let _ = recipient.do_send(ChatMessage(message.to_owned()));
+                recipient.do_send(ChatMessage(message.to_owned()));
             }
         }
     }

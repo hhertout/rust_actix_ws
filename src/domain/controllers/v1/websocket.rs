@@ -1,5 +1,5 @@
 use actix_web::{
-    error::{ErrorInternalServerError}, get, http::StatusCode, web::{self, Data}, Error, HttpRequest, HttpResponse,
+    get, web::{self, Data}, Error, HttpRequest, HttpResponse,
 };
 use actix_web_actors::ws;
 

@@ -1,5 +1,4 @@
-use std::io::Error;
-use redis::{Commands, Connection, RedisError, RedisResult};
+use redis::{Commands, Connection, RedisError};
 use crate::app::value_object::room::Room;
 
 pub struct RoomRepository {
