@@ -1,10 +1,10 @@
 mod app;
 
-use std::sync::{Arc, Mutex};
 use crate::domain::controllers::health::health;
 use actix_web::{web, App, HttpServer};
 use app::ws::socket_server::ChatServer;
 use domain::controllers::gen_v1;
+use std::sync::{Arc, Mutex};
 
 pub(crate) mod domain;
 mod infra;
@@ -23,7 +23,10 @@ async fn main() -> std::io::Result<()> {
         ws_server: server.clone(),
     };
 
-    log::info!("🚀 App will start on port {}", 8080);
+    let ipv4 = "0.0.0.0";
+    let port = std::env::var("PORT").unwrap_or_else(|_| String::from("4000"));
+
+    log::info!("🚀 App will start on port {}:{}", ipv4, port);
     // For bind ssl certificates : https://actix.rs/docs/server#tls--https
     HttpServer::new(move || {
         App::new()
@@ -31,8 +34,8 @@ async fn main() -> std::io::Result<()> {
             .service(health)
             .service(gen_v1())
     })
-        .bind(("127.0.0.1", 8080))?
-        .shutdown_timeout(10)
-        .run()
-        .await
+    .bind((ipv4, port.parse::<u16>().expect("Port cannot be parsed")))?
+    .shutdown_timeout(10)
+    .run()
+    .await
 }

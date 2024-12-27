@@ -1,12 +1,11 @@
 use actix_web::{
-    get, web::{self, Data}, Error, HttpRequest, HttpResponse,
+    get,
+    web::{self, Data},
+    Error, HttpRequest, HttpResponse,
 };
 use actix_web_actors::ws;
 
-use crate::{
-    app::ws::{socket_worker::SocketWorker},
-    AppState,
-};
+use crate::{app::ws::socket_worker::SocketWorker, AppState};
 
 #[get("/ws")]
 pub async fn chat(
@@ -19,12 +18,15 @@ pub async fn chat(
         srv.gen_uid()
     };
 
-
     log::debug!(
         "New websocket connection handled for user={:?}, room_id={:?}...",
         "todo",
         "todo"
     );
 
-    ws::start(SocketWorker::new(uid, state.ws_server.clone()), &req, stream)
+    ws::start(
+        SocketWorker::new(uid, state.ws_server.clone()),
+        &req,
+        stream,
+    )
 }

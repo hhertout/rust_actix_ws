@@ -82,7 +82,7 @@ impl StreamHandler<Result<ws::Message, ws::ProtocolError>> for SocketWorker {
             Ok(ws::Message::Binary(bin)) => ctx.binary(bin),
             Ok(ws::Message::Close(reason)) => {
                 if reason.is_none() {
-                    log::debug!("Socket disconnected");
+                    log::debug!("Socket disconnected for unknow reason");
                 } else {
                     log::debug!("Socket close : {:?}", reason);
                 }
