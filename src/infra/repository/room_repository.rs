@@ -1,5 +1,5 @@
+use crate::domain::value_object::room::Room;
 use redis::{Commands, Connection, RedisError};
-use crate::app::value_object::room::Room;
 
 pub struct RoomRepository {
     pool: Connection,
@@ -21,7 +21,7 @@ impl RoomRepository {
     pub fn find_one_by(&mut self, id: String) -> Result<String, RedisError> {
         self.pool.get(&id)
     }
-    
+
     pub fn delete_room(&mut self, id: String) -> Result<(), RedisError> {
         self.pool.del(&id)
     }

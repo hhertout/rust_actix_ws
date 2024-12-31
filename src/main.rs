@@ -1,9 +1,9 @@
-mod app;
+mod application;
 
-use crate::domain::controllers::health::health;
+use crate::application::controllers::health::health;
 use actix_web::{web, App, HttpServer};
-use app::ws::socket_server::ChatServer;
-use domain::controllers::gen_v1;
+use application::controllers::gen_v1;
+use domain::ws::socket_server::ChatServer;
 use std::sync::{Arc, Mutex};
 
 pub(crate) mod domain;

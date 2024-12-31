@@ -5,7 +5,7 @@ use actix_web::{
 };
 use actix_web_actors::ws;
 
-use crate::{app::ws::socket_worker::SocketWorker, AppState};
+use crate::{domain::ws::socket_worker::SocketWorker, AppState};
 
 #[get("/ws")]
 pub async fn chat(
